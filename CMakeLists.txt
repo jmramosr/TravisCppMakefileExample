@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 2.8)
 # Make PROJECT_SOURCE_DIR, PROJECT_BINARY_DIR, and PROJECT_NAME available.
 set(PROJECT_NAME project1)
 project(${PROJECT_NAME})
+include(gtest.cmake)
+
+SET(COVERAGE OFF CACHE BOOL "Coverage")
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
@@ -40,14 +43,9 @@ target_link_libraries(project1 project1_lib)
 option(BUILD_TESTS "Build all tests." OFF) # Makes boolean 'test' available.
 
 if (BUILD_TESTS)
-  # This adds another subdirectory, which has 'project(gtest)'.
-  add_subdirectory(ext/gtest-1.8.0)
 
   enable_testing()
 
-  # Include the gtest library. gtest_SOURCE_DIR is available due to
-  # 'project(gtest)' above.
-  include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
   ##############
   # Unit Tests
@@ -63,15 +61,5 @@ if (BUILD_TESTS)
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.
   add_test(UnitTests runUnitTests)
-
-  set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/.travis/cmake)
-
-  if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
-    include(CodeCoverage)
-    setup_target_for_coverage(${PROJECT_NAME}_coverage runUnitTests coverage)
-
-    SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
-    SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
-  endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
 
 endif()
