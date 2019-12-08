@@ -14,6 +14,12 @@ addons:
       - lcov
       - gcovr
 
+cache:
+  apt: true
+  directories:
+  - "${TRAVIS_BUILD_DIR}/deps/doxygen"
+
+
 before_install:
   - pip install --upgrade pip
   - pip install --user cpp-coveralls
