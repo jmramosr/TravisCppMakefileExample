@@ -12,8 +12,10 @@ addons:
       - clang
       - valgrind
       - lcov
+      - gcovr
 
 before_install:
+  - pip install --upgrade pip
   - pip install --user cpp-coveralls
   - pip install codecov
   - pip install gcovr
