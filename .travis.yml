@@ -17,12 +17,14 @@ addons:
       - valgrind
       - lcov
       - gcovr
+      - doxygen
 
 cache:
   apt: true
   directories:
   - "${TRAVIS_BUILD_DIR}/deps/doxygen"
 
+install: make get-deps
 
 before_install:
   - pip install --upgrade pip
