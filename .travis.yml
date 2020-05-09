@@ -23,6 +23,7 @@ cache:
   apt: true
   directories:
   - "${TRAVIS_BUILD_DIR}/deps/doxygen"
+  - '$HOME/.sonar/cache'
 
 before_install:
   - pip install --upgrade pip
@@ -32,13 +33,14 @@ before_install:
 
 script:
   - cmake -DCOVERAGE=1 .
+  - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - cmake --build . 
   - ./project1
   - gcovr -r ./ --xml -o ./coverage.xml
   - ls -la
   - ls -la ./src
   - ls -la ./test
-  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions=
+  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions= -Dsonar.cfamily.build-wrapper-output=bw-output
 
 after_success:
   - coveralls --root . -E ".*CMakeFiles.*" 
