@@ -3,6 +3,8 @@ sudo: true
 language: cpp
 
 addons:
+  sonarcloud:
+    organization: "jmramosr_TravisCppCmakeExample"
   apt:
     sources:
       - deadsnakes
@@ -34,6 +36,7 @@ script:
   - ./project1
   - gcovr -r ./ --xml -o ./coverage.xml
   - ls -la
+  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions=
 
 after_success:
   - coveralls --root . -E ".*CMakeFiles.*" 
