@@ -32,6 +32,15 @@ add_executable(project1 ${PROJECT_SOURCE_DIR}/src/main.cpp)
 # Key idea: SEPARATE OUT your main() function into its own file so it can be its
 # own executable. Separating out main() means you can add this library to be
 # used elsewhere (e.g linking to the test executable).
+if(CMAKE_COMPILER_IS_GNUCXX)
+LIST(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules")
+include(CodeCoverage)
+APPEND_COVERAGE_COMPILER_FLAGS()
+set(COVERAGE_LCOV_EXCLUDES 'dir1/*' 'dir2/*') // this is optional if you want to exclude some directory from the report
+SETUP_TARGET_FOR_COVERAGE_LCOV(NAME foo_coverage
+                              EXECUTABLE foo
+                              DEPENDENCIES foo)
+endif()
 
 target_link_libraries(project1 project1_lib)
 
