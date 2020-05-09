@@ -7,7 +7,9 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
       - llvm-toolchain-bionic-5.0
+      - deadsnakes
     packages:
+      - python3.5
       - g++
       - gcc
       - make
