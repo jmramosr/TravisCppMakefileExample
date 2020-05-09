@@ -40,7 +40,7 @@ script:
   - ls -la
   - ls -la ./src
   - ls -la ./test
-  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.gcov.reportsPath=./CMakeFiles/project1.dir/src/,./CMakeFiles/project1_lib.dir/src/ -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions= -Dsonar.cfamily.build-wrapper-output=bw-output
+  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.gcov.reportsPath=./CMakeFiles/project1.dir/src/,./CMakeFiles/project1_lib.dir/src/ -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions= -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.cfamily.threads=8
 
 after_success:
   - coveralls --root . -E ".*CMakeFiles.*" 
