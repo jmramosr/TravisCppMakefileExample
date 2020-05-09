@@ -33,7 +33,7 @@ before_install:
   - pip install gcovr
 
 script:
-  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake -DCOVERAGE=1 .
+  - cmake -DCOVERAGE=1 .
   - cmake --build . 
   - ./tests
   - gcovr -r ./ --xml -o ./coverage.xml
