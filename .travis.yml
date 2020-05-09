@@ -31,7 +31,7 @@ before_install:
 script:
   - cmake -DCOVERAGE=1 .
   - cmake --build . 
-  - ./tests
+  - ./project1
   - gcovr -r ./ --xml -o ./coverage.xml
 
 after_success:
