@@ -1,14 +1,16 @@
-dist: trusty
-sudo: false
+dist: bionic
+sudo: true
 language: cpp
 
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-      - llvm-toolchain-trusty-5.0
+      - llvm-toolchain-bionic-5.0
     packages:
       - g++
+      - gcc
+      - make
       - clang
       - valgrind
       - lcov
