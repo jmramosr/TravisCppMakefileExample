@@ -33,6 +33,7 @@ script:
   - cmake --build . 
   - ./project1
   - gcovr -r ./ --xml -o ./coverage.xml
+  - ls -la
 
 after_success:
   - coveralls --root . -E ".*CMakeFiles.*" 
