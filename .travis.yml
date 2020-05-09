@@ -36,6 +36,8 @@ script:
   - ./project1
   - gcovr -r ./ --xml -o ./coverage.xml
   - ls -la
+  - ls -la ./src
+  - ls -la ./test
   - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions=
 
 after_success:
