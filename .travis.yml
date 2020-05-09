@@ -24,8 +24,6 @@ cache:
   directories:
   - "${TRAVIS_BUILD_DIR}/deps/doxygen"
 
-install: make get-deps
-
 before_install:
   - pip install --upgrade pip
   - pip install --user cpp-coveralls
