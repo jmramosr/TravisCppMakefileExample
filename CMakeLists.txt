@@ -38,9 +38,9 @@ include(CodeCoverage)
 APPEND_COVERAGE_COMPILER_FLAGS()
 # this is optional if you want to exclude some directory from the report
 set(COVERAGE_LCOV_EXCLUDES 'dir1/*' 'dir2/*')
-SETUP_TARGET_FOR_COVERAGE_LCOV(NAME foo_coverage
-                              EXECUTABLE foo
-                              DEPENDENCIES foo)
+SETUP_TARGET_FOR_COVERAGE_LCOV(NAME project1_coverage
+                              EXECUTABLE project1
+                              DEPENDENCIES project1)
 endif()
 
 target_link_libraries(project1 project1_lib)

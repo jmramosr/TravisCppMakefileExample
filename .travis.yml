@@ -13,8 +13,6 @@ addons:
       - g++
       - gcc
       - make
-      - clang
-      - valgrind
       - lcov
       - gcovr
       - doxygen
@@ -25,23 +23,14 @@ cache:
   - "${TRAVIS_BUILD_DIR}/deps/doxygen"
   - '$HOME/.sonar/cache'
 
-before_install:
-  - pip install --upgrade pip
-  - pip install --user cpp-coveralls
-  - pip install codecov
-  - pip install gcovr
-
 script:
   - cmake -DCOVERAGE=1 .
   - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - cmake --build . 
   - ./project1
-  - gcovr -r ./ --xml -o ./coverage.xml
-  - ls -la
-  - ls -la ./src
-  - ls -la ./test
-  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.gcov.reportsPath=./CMakeFiles/project1.dir/src/,./CMakeFiles/project1_lib.dir/src/ -Dsonar.cfamily.coverage.reportPath=coverage.xml -Dsonar.exclusions= -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.cfamily.threads=8
+  - bash generate_gcov.sh
+  - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.gcov.reportsPath=./gcov/ -Dsonar.cfamily.coverage.reportPath=./coverage/coverage.xml -Dsonar.exclusions= -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.cfamily.threads=8
 
 after_success:
-  - coveralls --root . -E ".*CMakeFiles.*" 
+  - coveralls --root . --gcov ./gcov/ -E ".*CMakeFiles.*" 
   - codecov -t $CODECOV_TOKEN -X gcov
