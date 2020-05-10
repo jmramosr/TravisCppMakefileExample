@@ -25,8 +25,7 @@ cache:
 
 script:
   - cmake -DCOVERAGE=1 -DBUILD_TESTS=ON .
-  - cmake --build . 
-  - build-wrapper-linux-x86-64 --out-dir bw-output make
+  - build-wrapper-linux-x86-64 --out-dir bw-output cmake --build . 
   - ./runUnitTests
   - bash generate_gcov.sh
   - sonar-scanner -Dsonar.projectKey=jmramosr_TravisCppCmakeExample -Dsonar.sources=./src,./include -Dsonar.organization=jmramosr-github -Dsonar.cfamily.gcov.reportsPath=./gcov/ -Dsonar.cfamily.coverage.reportPath=./coverage/coverage.xml -Dsonar.exclusions= -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.cfamily.threads=8
