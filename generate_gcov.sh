@@ -6,8 +6,25 @@ if [ ! -d ./gcov/trash  ]; then mkdir -p ./gcov/trash ;fi
 
 # Going through ./gcov/trash
 cd ./gcov/trash
+
 # Search in the project all gcno files and make a gcov on them
-find ../../ -type f -name "*.gcno" -print0 | xargs -0 -I {} sh -c 'gcov -a -f -c -m -b "{}"'
+gcno_files=$(find ../../ -type f -name "*.gcno")
+for filename in $gcno_files
+do
+     orig_name=$(echo "$filename" | sed 's!.*/!!')
+     echo "gcovving" "$orig_name"
+	 $(gcov -a -f -c -m -b $gcno_files > /dev/null)
+done
+
+# Handling spetial case: gtest-all.cc.gcno
+gcno_files=$(find ../../ -type f -name "*gtest-all.cc.gcno")
+for filename in $gcno_files
+do
+     orig_name=$(echo "$filename" | sed 's!.*/!!')
+     echo "gcovving" "$orig_name"
+	 $(gcov -a -f -c -m -b $gcno_files > /dev/null)
+done
+
 # Search every .gcda file and replace the extension to gcov. This is for use only the files with data in the coverage
 gcda_files=$(find ../../ -type f -name "*.gcda")
 
@@ -22,11 +39,12 @@ done
 
 # Erase all .gcov files in ./gcov/trash
 rm -f ./*.gcov
+
 # Going out to ./gcov
 cd ..
 # gcovr it!
 gcovr -r ./ --xml -o ../coverage/coverage.xml
-gcovr -r ./ --html --html-details -o ../coverage/coverage.html
+#gcovr -r ./ --html --html-details -o ../coverage/coverage.html
 # Exit pacefully
 cd ..
 
