@@ -63,7 +63,7 @@ if (BUILD_TESTS)
   add_executable(runUnitTests ${TEST_SRC_FILES})
 
   # Standard linking to gtest stuff.
-  target_link_libraries(runUnitTests gtest)
+  target_link_libraries(runUnitTests gtest pthread)
 
   # Extra linking for the project.
   target_link_libraries(runUnitTests project1_lib)
