@@ -1,6 +1,7 @@
 dist: trusty
 sudo: true
 language: cpp
+os: linux
 
 addons:
   sonarcloud:
