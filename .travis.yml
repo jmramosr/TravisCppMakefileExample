@@ -3,12 +3,14 @@ sudo: true
 language: cpp
 os: linux
 
+python:
+  - "pypy"
+
 addons:
   sonarcloud:
     organization: "jmramosr-github"
   apt:
     packages:
-      - python3.5
       - g++
       - gcc
       - make
