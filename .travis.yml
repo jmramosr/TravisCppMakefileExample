@@ -16,9 +16,6 @@ addons:
       - doxygen
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install python3
-  - pip install --user cpp-coveralls
   - pip install codecov
   - pip install gcovr
 
@@ -35,5 +32,4 @@ script:
   - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 after_success:
-  - coveralls --root . --gcov "./gcov/" -n --exclude cmake_modules --exclude gtest --exclude test
   - codecov -t $CODECOV_TOKEN -X gcov
