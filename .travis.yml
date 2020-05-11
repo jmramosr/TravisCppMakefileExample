@@ -17,8 +17,6 @@ addons:
       - lcov
       - gcovr
       - doxygen
-      - coveralls
-      - codecov
 
 before_install:
   - pip install --user cpp-coveralls
