@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 # Make PROJECT_SOURCE_DIR, PROJECT_BINARY_DIR, and PROJECT_NAME available.
 set(PROJECT_NAME project1)
 project(${PROJECT_NAME})
-include(gtest.cmake)
+include(lib/gtest.cmake)
 
 SET(COVERAGE OFF CACHE BOOL "Coverage")
 
