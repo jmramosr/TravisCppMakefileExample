@@ -3,9 +3,6 @@ sudo: true
 language: cpp
 os: linux
 
-python:
-  - "pypy"
-
 addons:
   sonarcloud:
     organization: "jmramosr-github"
