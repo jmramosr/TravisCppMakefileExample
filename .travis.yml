@@ -7,8 +7,6 @@ addons:
   sonarcloud:
     organization: "jmramosr-github"
   apt:
-    sources:
-      - deadsnakes
     packages:
       - python3.5
       - g++
@@ -28,11 +26,6 @@ cache:
   directories:
   - "${TRAVIS_BUILD_DIR}/deps/doxygen"
   - '$HOME/.sonar/cache'
-
-before_install:
-  - pip install --user cpp-coveralls
-  - pip install codecov
-  - pip install gcovr
 
 script:
   - cmake -DCMAKE_BUILD_TYPE=ON -DCOVERAGE=1 -DBUILD_TESTS=ON .
