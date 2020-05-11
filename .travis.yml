@@ -16,6 +16,9 @@ addons:
       - lcov
       - gcovr
       - doxygen
+      - coveralls
+      - codecov
+      - cpp-coveralls
 
 cache:
   apt: true
@@ -24,7 +27,6 @@ cache:
   - '$HOME/.sonar/cache'
 
 before_install:
-  - pip install --upgrade pip
   - pip install --user cpp-coveralls
   - pip install codecov
   - pip install gcovr
@@ -37,5 +39,5 @@ script:
   - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 after_success:
-  - coveralls -t $COVERALLS_TOKEN --root . --gcov "./gcov/" -n -E ".*CMakeFiles.*"
+  - coveralls --root . --gcov "./gcov/" -n -E ".*CMakeFiles.*"
   - codecov -t $CODECOV_TOKEN -X gcov
