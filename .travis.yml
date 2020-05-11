@@ -24,7 +24,7 @@ cache:
   - '$HOME/.sonar/cache'
 
 script:
-  - cmake -DCOVERAGE=1 -DBUILD_TESTS=ON .
+  - cmake -DCMAKE_BUILD_TYPE=ON -DCOVERAGE=1 -DBUILD_TESTS=ON .
   - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - ./runUnitTests
   - bash generate_gcov.sh
