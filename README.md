@@ -34,4 +34,5 @@ Example to make CI with travis with C++98 example code and gtest to test it, son
 ## Warnings
 
 ⬜️ As long as google test will need C++11, all the entire project will be compiled with C++11. If you need something related with C++98 or C, you can create the library (as described in line 40 of the CMakeLists.txt file) with the standard you need, or don't touch anything and use as is.
+
 ⬜️ Tested on cygwin under windows 10.
