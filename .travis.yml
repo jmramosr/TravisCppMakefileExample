@@ -25,7 +25,6 @@ cache:
 
 script:
   - cmake -DCOVERAGE=1 -DBUILD_TESTS=ON .
-  - cmake --build .
   - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - ./runUnitTests
   - bash generate_gcov.sh
