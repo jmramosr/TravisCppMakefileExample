@@ -35,5 +35,5 @@ script:
   - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 after_success:
-  - coveralls --root . --gcov "./gcov/" -n -E ".*CMakeFiles.*"
+  - coveralls --root . --gcov "./gcov/" -n --exclude cmake_modules --exclude gtest --exclude test
   - codecov -t $CODECOV_TOKEN -X gcov
