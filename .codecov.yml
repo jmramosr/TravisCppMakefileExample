@@ -36,5 +36,6 @@ ignore:
   - "CMake*"
   # ignore folders and all its contents
   - "CMakeFiles/.*"
-  - "gtest/.*"
+  - "lib/.*"
+  - "test/.*"
   - "cmake_modules/.*"
