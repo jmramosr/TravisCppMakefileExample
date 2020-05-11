@@ -1,4 +1,4 @@
-dist: trusty
+dist: bionic
 sudo: true
 language: cpp
 os: linux
@@ -19,6 +19,11 @@ addons:
       - doxygen
       - coveralls
       - codecov
+
+before_install:
+  - pip install --user cpp-coveralls
+  - pip install codecov
+  - pip install gcovr
 
 cache:
   apt: true
