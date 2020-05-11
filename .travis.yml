@@ -5,7 +5,7 @@ os: linux
 
 addons:
   sonarcloud:
-    organization: "jmramosr_TravisCppCmakeExample"
+    organization: "jmramosr-github"
   apt:
     sources:
       - deadsnakes
