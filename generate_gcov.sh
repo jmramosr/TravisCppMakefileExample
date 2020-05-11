@@ -38,14 +38,14 @@ do
 done
 
 # Erase all .gcov files in ./gcov/trash
-rm -f ./*.gcov
+#rm -f ./*.gcov
 
 # Going out to ./gcov
-cd ..
+cd ../../
 # gcovr it!
-gcovr -r ./ --xml -o ../coverage/coverage.xml
+gcovr -r ./ --xml -o ./coverage/coverage.xml
 #gcovr -r ./ --html --html-details -o ../coverage/coverage.html
 # Exit pacefully
-cd ..
+# cd ..
 
 echo "done gcovving"
