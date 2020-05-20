@@ -30,9 +30,8 @@ script:
   - chmod +x compile_part_1.sh
   - sh compile_part_1.sh
   - build-wrapper-linux-x86-64 --out-dir bw-output make
-  - gcov -a -f -c -m -b -w ./obj/*.gcno -o ./obj/ -s ./src/
+  - gcov -a -f -c -m -b ./obj/*.gcno -o ./obj/ -s ./src/
   - gcovr -g -k -r ./ --xml -o ./xml/coverage.xml
-  - gcovr -g -k -r ./ --sonarqube -o ./xml/sonarqube.xml
   - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 after_success:
