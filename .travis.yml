@@ -25,6 +25,9 @@ cache:
   - '$HOME/.sonar/cache'
 
 script:
+  - chmod +x ./lib/local_gtest_scripts/get-nprocessors.sh
+  - chmod +x ./lib/local_gtest_scripts/travis.sh
+  - chmod +x compile_part_1.sh
   - sh compile_part_1.sh
   - build-wrapper-linux-x86-64 --out-dir bw-output make
   - gcov -a -f -c -m -b -w ./obj/*.gcno -o ./obj/ -s ./src/
