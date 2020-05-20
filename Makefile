@@ -48,7 +48,7 @@ TESTING_FILES_01 += $(OBJ_DIR)test_project1.o11dt
 # Special include directories (gtest-based)
 INC_PROGRAM_TEST_01 = $(INC_ALL) -I./include/gtest -I./include/gmock
 # Libraries needed by the different programs and their respective names
-LIB_PROGRAM_TEST_01 = $(LIB_BASE) $(LIB_MATH) -lgtest_main -lgtest -lrt -lgcov -lstdc++
+LIB_PROGRAM_TEST_01 = $(LIB_BASE) $(LIB_MATH) -lgtest_main -lgtest -lrt -lgcov -lstdc++ -pthread
 
 $(PROGRAM_NAME_01): $(TESTING_FILES_01)
 	# $(ccorange)--- Linking $< ---$(ccend)
