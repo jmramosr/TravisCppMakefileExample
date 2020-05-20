@@ -1,7 +1,7 @@
 # Travis Cpp Makefile Example
 Example to make CI with travis with C++98 example code and gtest to test it, sonarcloud to track smells and codecov to check the code covered by tests. I'm not responsible of the code granted by the example.
 
-[![codecov](https://codecov.io/gh/jmramosr/TravisCppMakefileExample/branch/master/graph/badge.svg)](https://codecov.io/gh/jmramosr/TravisCppMakefileExample) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jmramosr_TravisCppMakefileExample&metric=coverage)](https://sonarcloud.io/dashboard?id=jmramosr_TravisCppMakefileExample) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jmramosr_TravisCppMakefileExample&metric=alert_status)](https://sonarcloud.io/dashboard?id=jmramosr_TravisCppMakefileExample) [![Build Status](https://travis-ci.com/jmramosr/TravisCppCmakeExample.svg?branch=master)](https://travis-ci.com/github/jmramosr/TravisCppCmakeExample)
+[![codecov](https://codecov.io/gh/jmramosr/TravisCppMakefileExample/branch/master/graph/badge.svg)](https://codecov.io/gh/jmramosr/TravisCppMakefileExample) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jmramosr_TravisCppMakefileExample&metric=coverage)](https://sonarcloud.io/dashboard?id=jmramosr_TravisCppMakefileExample) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jmramosr_TravisCppMakefileExample&metric=alert_status)](https://sonarcloud.io/dashboard?id=jmramosr_TravisCppMakefileExample) [![Build Status](https://travis-ci.com/jmramosr/TravisCppMakefileExample.svg?branch=master)](https://travis-ci.com/github/jmramosr/TravisCppMakefileExample)
 
 ## How to use this example in your project.
 
